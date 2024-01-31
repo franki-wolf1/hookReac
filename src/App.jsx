@@ -26,23 +26,14 @@ function Formulario() {
   password.current = watch("password", "");
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    // reset({
-    //   nombre: '',
-    //   correo: '',
-    //   fechaNacimiento: '',
-    //   password: '',
-    //   confirmarPassword: '',
-    //   pais: 'ar',
-    //   archivo: '',
-    //   aceptaTerminos: false
-    // })
+    console.log(data); 
     reset();
   });
 
-  return (
+  return ( 
     <form onSubmit={onSubmit}>
-      <div>
+      <h3 class="padingform">Formulario react-hook-form / Franki B</h3>
+      <div class="padingform">
         <label>Nombre:</label>
         <input
           type="text"
@@ -65,7 +56,7 @@ function Formulario() {
         )}
       </div>
 
-      <div>
+      <div class="padingform">
         <label>Correo Electrónico:</label>
         <input
           type="email"
@@ -84,7 +75,7 @@ function Formulario() {
         {errors.correo && <span>{errors.correo.message}</span>}
       </div>
 
-      <div>
+      <div class="padingform">
         <label>Fecha de Nacimiento:</label>
         <input
           type="date"
@@ -108,7 +99,7 @@ function Formulario() {
         )}
       </div>
 
-      <div>
+      <div class="padingform">
         <label>Contraseña:</label>
         <input
           type="password"
@@ -127,7 +118,7 @@ function Formulario() {
         {errors.password && <span>{errors.password.message}</span>}
       </div>
 
-      <div>
+      <div class="padingform">
         <label>Confirma Contraseña:</label>
         <input
           type="password"
@@ -150,7 +141,7 @@ function Formulario() {
         )}
       </div>
 
-      <div>
+      <div class="padingform">
         <label htmlFor="pais">Pais:</label>
         <select name="pais" id="pais" {...register("pais")}>
           <option value="mx">México</option>
@@ -172,8 +163,8 @@ function Formulario() {
         )}
       </div>
 
-      <div>
-        <label htmlFor="archivo">subir nombre de archivo:</label>
+      <div class="padingform">
+        <label htmlFor="archivo">Subir archivo:</label>
         <input
           type="file"
           onChange={(e) => {
@@ -183,8 +174,8 @@ function Formulario() {
         {errors.archivo && <span>{errors.archivo.message}</span>}
       </div>
 
-      <div>
-        <input
+      <div class="row">
+      <input class="col-2"
           type="checkbox"
           name="aceptaTerminos"
           {...register("aceptaTerminos", {
@@ -194,14 +185,17 @@ function Formulario() {
             },
           })}
         />
-        <label>Acepto los términos y condiciones</label>
+        <label class="col">Acepto los términos y condiciones</label>
         {errors.aceptaTerminos && <span>{errors.aceptaTerminos.message}</span>}
       </div>
 
+      
+      <div class="padingform">
       <button type="submit">Enviar</button>
 
       <pre style={{ width: "400px" }}>{JSON.stringify(watch(), null, 2)}</pre>
-      <h3>Hello {watch("nombre")}</h3>
+      <h3 >Hello {watch("nombre")}</h3>
+      </div>
     </form>
   );
 }
